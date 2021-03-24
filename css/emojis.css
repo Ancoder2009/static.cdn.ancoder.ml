@@ -1,9 +1,15 @@
-//All emojis/images belongs to Ancoder
+/* All emojis/images belongs to Ancoder */
 
-.ancoder-blobby-emoji{
-	background-image: url('https://static.cdn.ancoder.ml/blobby.png');
+.emojify{
 	background-repeat: no-repeat;
 	position: absolute;
 	width: 100%;
 	height: 100%;
+}
+
+.blobby-emoji{
+	background-image: url('https://static.cdn.ancoder.ml/blobby.png');
+}
+.bumdo-emoji{
+	background-image: url('https://static.cdn.ancoder.ml/bumdo.png');
 }
