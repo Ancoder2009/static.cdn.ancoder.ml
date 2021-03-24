@@ -1,0 +1,9 @@
+//All emojis/images belongs to Ancoder
+
+.ancoder-blobby-emoji{
+	background-image: url(../emoji/blobby.png);
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
