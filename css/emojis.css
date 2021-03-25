@@ -19,4 +19,5 @@
 	height: 24px;
 	z-index: 1;
 	display: inline-block;
+	background-repeat: no-repeat;
 }
