@@ -14,10 +14,9 @@
 .bumdo-emoji{
 	background-image: url('https://static.cdn.ancoder.ml/bumdo.png');
 	background-size: cover;
-  	background-position: center;
-  	background-attachment: fixed;
+  	background-position: 0px 1px;
 	width: 24px;
-	height: 23px;
+	height: 24px;
 	z-index: 1;
 	display: inline-block;
 }
