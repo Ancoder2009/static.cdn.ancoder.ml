@@ -8,6 +8,8 @@
 	width: 24px;
 	height: 23px;
 	display: inline-block;
+	background-position: 0px 1px;
+	background-repeat: no-repeat;
 }
 .bumdo-emoji{
 	background-image: url('https://static.cdn.ancoder.ml/bumdo.png');
