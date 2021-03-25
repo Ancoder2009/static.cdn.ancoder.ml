@@ -5,8 +5,8 @@
 	background-image: url('https://static.cdn.ancoder.ml/blobby.png');
 	z-index: 1;
 	background-size: cover;
-  	background-position: center;
-  	background-attachment: fixed;
+	width: 24px;
+	height: 23px;
 	display: inline-block;
 }
 .bumdo-emoji{
@@ -14,6 +14,8 @@
 	background-size: cover;
   	background-position: center;
   	background-attachment: fixed;
+	width: 24px;
+	height: 23px;
 	z-index: 1;
 	display: inline-block;
 }
