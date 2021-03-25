@@ -3,15 +3,17 @@
 
 .blobby-emoji{
 	background-image: url('https://static.cdn.ancoder.ml/blobby.png');
-	background-position: 0 0;
-	background-size: 100% 100%;
 	z-index: 1;
+	background-size: cover;
+  	background-position: center;
+  	background-attachment: fixed;
 	display: inline-block;
 }
 .bumdo-emoji{
 	background-image: url('https://static.cdn.ancoder.ml/bumdo.png');
-	background-position: 0 0;
-	background-size: 100% 100%;
+	background-size: cover;
+  	background-position: center;
+  	background-attachment: fixed;
 	z-index: 1;
 	display: inline-block;
 }
