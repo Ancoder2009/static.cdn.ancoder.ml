@@ -1,14 +1,11 @@
 /* All emojis/images belongs to Ancoder */
 
-.emojify{
-	background-repeat: no-repeat;
-	background-position: 0 0;
-	position: absolute;
-}
 
 .blobby-emoji{
 	background-image: url('https://static.cdn.ancoder.ml/blobby.png');
+	background-position: 0 0;
 }
 .bumdo-emoji{
 	background-image: url('https://static.cdn.ancoder.ml/bumdo.png');
+	background-position: 0 0;
 }
