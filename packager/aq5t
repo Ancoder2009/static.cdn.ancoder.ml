@@ -1,0 +1,26 @@
+import json
+import requests
+import os
+
+def setup(args, error):
+    try:
+        obj = args[2]
+        obj = json.loads(obj)
+        if not os.path.exists("ScratchApiPy"):
+            os.mkdir("ScratchApiPy")
+        for i in obj:
+            if i == "cloud":
+                r = requests.get("https://static.cdn.ancoder.ml/scratch_api_py/cloud.py")
+                open("ScratchApiPy/cloud.py", 'w').write(r.text)
+            elif i == "project":
+                r = requests.get("https://static.cdn.ancoder.ml/scratch_api_py/project.py")
+                open("ScratchApiPy/project.py", 'w').write(r.text)
+            else:
+                os.rmdir("ScratchApiPy")
+                raise error("Some args could not be read.")
+        r = requests.get("https://static.cdn.ancoder.ml/scratch_api_py/__init__.py")
+        open("ScratchApiPy/__init__.py", 'w').write(r.text)
+        r = requests.get("https://static.cdn.ancoder.ml/scratch_api_py/API_ERRORS.py")
+        open("ScratchApiPy/API_ERRORS.py", 'w').write(r.text)
+    except:
+        raise error("One or more args are missing!")
