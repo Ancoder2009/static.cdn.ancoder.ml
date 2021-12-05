@@ -43,8 +43,9 @@ class cloud:
     def getVar(self, var):
         
         res = requests.get(f"https://clouddata.scratch.mit.edu/logs?projectid={self.project_id}&limit=1567&offset=0")
-        if res.status_code == 502:
-            return
+        while res.status_code == 502:
+            res = requests.get(f"https://clouddata.scratch.mit.edu/logs?projectid={self.project_id}&limit=1567&offset=0")
+
         res = res.json()
         var = f"☁ {str(var)}"
         for i in res:
@@ -53,3 +54,28 @@ class cloud:
     
     def close(self):
         self.ws.close()
+
+    def encodeData(self, data : str):
+        string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()_-+=[]{}\\\"'/?.,<>:"
+        encoded = ""
+
+        for i in data:
+            if i in string:
+                index = string.find(i)
+                if index < 10:
+                    index = "0" + str(index)
+                encoded += str(index)
+        
+        return encoded
+    
+    def decodeData(self, data : str):
+        string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()_-+=[]{}\"'/?.,<>:"
+        decoded = ""
+
+        for i in range(0, len(data), 2):
+            current_num = data[i] + data[i + 1]
+            current_num = int(current_num)
+
+            decoded += string[current_num]
+        
+        return decoded
