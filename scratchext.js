@@ -24,6 +24,7 @@ class TestExt {
   }
   test(args) {
     // Note strict equality: Inputs must match exactly: in type, case, etc.
+    alert(args.ONE + args.TWO)
     return args.ONE === args.TWO;
   }
 }
