@@ -7,7 +7,7 @@ class TestExt {
         {
           opcode: 'test',
           blockType: Scratch.BlockType.BOOLEAN,
-          text: 'hi [ONE] [two]',
+          text: 'hi [ONE] [TWO]',
           arguments: {
             ONE: {
               type: Scratch.ArgumentType.STRING,
