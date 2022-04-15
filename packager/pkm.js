@@ -1,5 +1,7 @@
 var DATA = {};
 
+alert("Activated!")
+
 var SUPPORTED = [
   'gen1randombattle', 'gen2randombattle',  'gen3randombattle',
   'gen4randombattle', 'gen5randombattle', 'gen6randombattle',
