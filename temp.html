@@ -1,0 +1,824 @@
+<html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <title>Chat - Nerd Plant</title>
+    
+<link rel="stylesheet" type="text/css" href="https://ntc.ancoder.codes/static/chat_style.css">
+<script type="text/javascript" src="/static/chat.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<style type="text/css" id="msg-hover">
+    .message:hover {
+        background-color: rgb(235, 235, 235);
+    }
+</style>
+
+</head>
+<body>
+    
+<div class="topbar"><span>Chat: Nerd Plant</span></div>
+<div class="context-menu">
+    <div class="context-body">
+        <ul class="context-elems">
+            <li class="edit-msg ctx-item">Edit Message</li>
+            <li class="delete-msg ctx-item">Delete Message</li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="users-wrapper">
+    <template id="user-template">
+        <li class="user" data-user-id="0">
+                <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+                <div class="user-text">
+                <span class="username">Username</span>
+                <span class="status">Online</span>
+            </div>
+        </li>
+    </template>
+    <ol class="users-list">
+        <li class="user" data-user-id="1">
+                <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+                <div class="user-text">
+                <span class="username">Anthony</span>
+                <span class="status">Idle</span>
+            </div>
+        </li>
+    
+        <li class="user" data-user-id="2">
+                <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+                <div class="user-text">
+                <span class="username">Cory</span>
+                <span class="status">Offline</span>
+            </div>
+        </li>
+    
+        <li class="user" data-user-id="3">
+                <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+                <div class="user-text">
+                <span class="username">Vynxpro</span>
+                <span class="status">Offline</span>
+            </div>
+        </li>
+    </ol>
+</div>
+<div class="bottom-square">
+    <span class="user-username">Anthony</span>
+    <div class="change-status idle">
+        <span class="user-status">Idle</span>
+    </div>
+    <div class="status-change-menu">
+        <button class="online changebtn">Online</button>
+        <button class="idle changebtn">Idle</button>
+        <button class="dnd changebtn">Do Not Disturb</button>
+    </div>
+</div>
+<div class="message-wrapper">
+    <template id="message-template">
+        <li class="message" data-author="author" data-timestamp="0">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Author</span>
+                    <span class="timestamp">a minute ago</span>
+                    <span class="edited">(edited)</span>
+                </div>
+                <div class="message-body">
+                    <span class="content">Lorem ipsum dolor sit amet</span>
+                </div>
+            </div>
+        </li>
+    </template>
+    <ol class="message-list">
+        <li class="message" data-author="Cory" data-timestamp="1662574092" data-msg-id="273">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">HIGH</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662574095" data-msg-id="274">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">LOW
+
+</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662574100" data-msg-id="275">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">/helpme</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662574828" data-msg-id="276">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">hi</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662585492" data-msg-id="277">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">Full gimmicks team sweeps through sivi pokes</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662585496" data-msg-id="278">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">+sevii</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662585503" data-msg-id="279">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">*sevii</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662585704" data-msg-id="280">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text"></span><a target="_blank" href="https://replay.pokemonshowdown.com/radicalred-gen8ou-229764">https://replay.pokemonshowdown.com/radicalred-gen8ou-229764</a><span class="text"></span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662587683" data-msg-id="281">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">hello</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662587687" data-msg-id="282">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">\</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662587719" data-msg-id="283">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">im using a libary  computer to type this</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662599219" data-msg-id="284">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">YOU ONLINE
+
+</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662599221" data-msg-id="285">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">HI</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662600700" data-msg-id="286">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">no im doing hw</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662612399" data-msg-id="287">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/7/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">cn=/</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662651660" data-msg-id="288">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">Hi</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662651663" data-msg-id="289">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">anthony</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662651664" data-msg-id="290">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">HI</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662655101" data-msg-id="291">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">hi</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662663535" data-msg-id="292">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">hi</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662673598" data-msg-id="293">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">hello</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662683968" data-msg-id="294">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">do you like the new message spacing</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Vynxpro" data-timestamp="1662685639" data-msg-id="295">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Vynxpro</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">hi</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662694590" data-msg-id="296">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">Yes</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662694689" data-msg-id="297">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">EPIC HYPER V HYPER BATTLE </span><a target="_blank" href="https://replay.pokemonshowdown.com/radicalred-gen8ou-230676">https://replay.pokemonshowdown.com/radicalred-gen8ou-230676</a><span class="text"></span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662701443" data-msg-id="298">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">A couple things</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662701457" data-msg-id="299">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">1 vyom needs to see all the links I post</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662701475" data-msg-id="300">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">2 Can any of you come over to my house on sunday</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662701487" data-msg-id="301">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">9/8/2022</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">NVM</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662732581" data-msg-id="302" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">Yesterday at 7:09 AM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">I think i can</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662738531" data-msg-id="303" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">Yesterday at 8:48 AM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">hi</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662752855" data-msg-id="304" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">Yesterday at 12:47 PM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">Hi</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662752856" data-msg-id="305" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">Yesterday at 12:47 PM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">Hi</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662766183" data-msg-id="306" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">Yesterday at 4:29 PM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">OP duck </span><a target="_blank" href="https://replay.pokemonshowdown.com/gen8randombattle-1660409526">https://replay.pokemonshowdown.com/gen8randombattle-1660409526</a><span class="text"></span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662779153" data-msg-id="307" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">Yesterday at 8:05 PM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">VYOM OR ANTHONY COME OVER TO MY HOUSE AT 9:30 and stuff you can stay till 11:30</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662779170" data-msg-id="308" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">Yesterday at 8:06 PM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">what date?</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662779196" data-msg-id="309" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">Yesterday at 8:06 PM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">sunday in two days</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662779200" data-msg-id="310" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">Yesterday at 8:06 PM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">Also </span><a target="_blank" href="https://replay.pokemonshowdown.com/radicalred-gen8lc-227592">https://replay.pokemonshowdown.com/radicalred-gen8lc-227592</a><span class="text"></span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662779204" data-msg-id="311" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">Yesterday at 8:06 PM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">Best replay ever</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662779891" data-msg-id="312" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">Yesterday at 8:18 PM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">ok</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662779922" data-msg-id="313" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">Yesterday at 8:18 PM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">nope i cant do it :(</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662780834" data-msg-id="315" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">Yesterday at 8:33 PM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">Delete function works</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662780844" data-msg-id="316" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">Yesterday at 8:34 PM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">right click then delete message</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662781344" data-msg-id="318" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">Yesterday at 8:42 PM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">Eevee suck
+They turn right to dust
+Whenever they hit the field
+They disintegrate
+Before you evaluate 
+How Eevee is so (BAD) weird
+Eevee suck
+They turn right to dust
+Because they are so bad
+They get destroyed
+Before you're annoyed
+Why Eevee is so (BAD) sad</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662783136" data-msg-id="319" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">Yesterday at 9:12 PM</span>
+                    <span class="edited">(edited)</span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">if this message ends with an 'a' editing fails b</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662784602" data-msg-id="321" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">Yesterday at 9:36 PM</span>
+                    <span class="edited">(edited)</span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">
+                    test edit</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662784875" data-msg-id="322" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">Yesterday at 9:41 PM</span>
+                    <span class="edited">(edited)</span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">
+                    yes editing works :)</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662823052" data-msg-id="323" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">Today at 8:17 AM</span>
+                    <span class="edited">(edited)</span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">
+                    (edited for your safety)
+                </span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Cory" data-timestamp="1662823314" data-msg-id="324" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Cory</span>
+                    <span class="timestamp">Today at 8:21 AM</span>
+                    <span class="edited"></span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">How are you doing</span></span></span>
+                </div>
+            </div>
+        </li>
+    
+        <li class="message" data-author="Anthony" data-timestamp="1662849050" data-msg-id="325" data-time-dynamic="true">
+            <img src="/static/pfps/USERdefault.jpg" width="40" height="40" class="pfp">
+            <div class="message-content">
+                <div class="message-head">
+                    <span class="author">Anthony</span>
+                    <span class="timestamp">Today at 3:30 PM</span>
+                    <span class="edited">(edited)</span>
+                </div>
+                <div class="message-body">
+                    <span class="content"><span class="text"><span class="text">
+                    hello
+                </span></span></span>
+                </div>
+            </div>
+        </li>
+    </ol>
+</div>
+<div class="inputbox">
+    <div class="chat-input" role="textbox" contenteditable="true" aria-label="Message in: Nerd Plant"></div>
+    <button class="chat-send"></button>
+</div>
+<div class="connection hidden">Connecting...</div>
+
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable" aria-describedby="popup-confirm-delete" style="display: none; position: absolute;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">&nbsp;</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="popup-confirm-delete" class="ui-dialog-content ui-widget-content">Are you sure you want to delete this message?</div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable" aria-describedby="popup-edit" aria-labelledby="ui-id-2" style="display: none; position: absolute;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">&nbsp;</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="popup-edit" class="ui-dialog-content ui-widget-content"><div>New Message:</div><div role="textbox" class="edit-input" contenteditable="true" aria-label="Message in: {{ chat.name }}"></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div></body></html>
